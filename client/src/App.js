@@ -8,11 +8,14 @@ import {
 } from 'react-router-dom';
 
 import Public from './components/Public';
+import Header from './components/Header';
 import UserSignIn from "./components/UserSignIn";
+
 
 const App = () => (
   <Router>
     <div>
+      <Header/>
     <Routes>
       <Route exact path="/" element={<Public />}/>
       <Route path="/signin" element={<UserSignIn/>}/>
