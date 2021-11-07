@@ -1,9 +1,27 @@
 //Adapted from the React Authentication Project in TreeHouse
 import React, { Component } from 'react';
-console.log('Public Component');
+const axios = require('axios');
+
+// console.log('Public Component');
+
 export default class Courses extends Component {
-    
+
     render() {
+
+        //code example from Axios docs
+        axios.get('localhost:5000/user?id=1')
+        .then(function (response) {
+          // handle success
+          console.log(response);
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        })
+        .then(function () {
+          // always executed
+          console.log('This will always run');
+        });
         return (
             <div>
                 <div>
