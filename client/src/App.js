@@ -10,6 +10,7 @@ import {
 import Public from './components/Public';
 import Header from './components/Header';
 import UserSignIn from "./components/UserSignIn";
+import UserSignOut from "./components/UserSignOut";
 
 
 const App = () => (
@@ -19,6 +20,7 @@ const App = () => (
     <Routes>
       <Route exact path="/" element={<Public />}/>
       <Route path="/signin" element={<UserSignIn/>}/>
+      <Route path="/signout" element={<UserSignOut/>}/>
     </Routes>
     </div>
   </Router>

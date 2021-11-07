@@ -26,6 +26,7 @@ export default class Courses extends Component {
             <div>
                 <div>
                     <h1>Welcome to the Course App</h1>
+                    
                 </div>
             </div>
         );
