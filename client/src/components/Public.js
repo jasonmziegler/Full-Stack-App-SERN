@@ -9,7 +9,7 @@ export default class Courses extends Component {
     render() {
 
         //code example from Axios docs
-        axios.get('localhost:5000/user?id=1')
+        axios.get('http://localhost:5000/api/courses/1')
         .then(function (response) {
           // handle success
           console.log(response);
