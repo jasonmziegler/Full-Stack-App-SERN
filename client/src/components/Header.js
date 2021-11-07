@@ -11,6 +11,7 @@ export default class Header extends React.PureComponent {
                     {/* From TreeHouse React Authentication Course */}
                     <React.Fragment>
                         {/* <Link className="signup" to="/signup">Sign Up</Link> */}
+                        <Link  to="/signup">Sign Up</Link>
                         <Link  to="/signin">Sign In</Link>
                         <Link  to="/signout">Sign Out</Link>
                     </React.Fragment>
