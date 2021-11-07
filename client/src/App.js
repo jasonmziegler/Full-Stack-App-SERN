@@ -1,18 +1,22 @@
 // import logo from './logo.svg';
 // import './styles/App.css';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes
+} from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        
-        <p>
-          This is a course directory project.
-        </p>
-        
-      </header>
+import Public from './components/Public';
+
+const App = () => (
+  <Router>
+    <div>
+    <Routes>
+      <Route exact path="/" element={<Public />}/>
+    </Routes>
     </div>
-  );
-}
+  </Router>
+);
 
 export default App;
