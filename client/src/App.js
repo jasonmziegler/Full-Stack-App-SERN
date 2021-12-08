@@ -13,6 +13,10 @@ import UserSignIn from "./components/UserSignIn";
 import UserSignUp from "./components/UserSignUp";
 import UserSignOut from "./components/UserSignOut";
 
+import withContext from './Context';
+
+const UserSignUpWithContext = withContext(UserSignUp);
+
 
 const App = () => (
   <Router>
@@ -21,7 +25,7 @@ const App = () => (
     <Routes>
       <Route exact path="/" element={<Public />}/>
       <Route path="/signin" element={<UserSignIn/>}/>
-      <Route path="/signup" element={<UserSignUp/>}/>
+      <Route path="/signup" element={<UserSignUpWithContext/>}/>
       <Route path="/signout" element={<UserSignOut/>}/>
     </Routes>
     </div>
