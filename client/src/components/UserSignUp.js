@@ -68,7 +68,7 @@ export default class UserSignUp extends Component {
       }
     
       submit = () => {
-    
+        console.log("Form Submitted");
       }
     
       cancel = () => {
