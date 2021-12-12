@@ -9,6 +9,7 @@ export default class UserSignUp extends Component {
         password: '',
         errors: [],
       }
+      
     render() {
         const {
             name,
@@ -16,6 +17,7 @@ export default class UserSignUp extends Component {
             password,
             errors,
           } = this.state;
+          console.log("Props: ",this.props);
         return (
             <div>
                 <h1>User Sign Up</h1>
@@ -68,10 +70,36 @@ export default class UserSignUp extends Component {
       }
     
       submit = () => {
-        console.log("Form Submitted");
+        //console.log("Form Submitted");
+        const { context } = this.props;
+        console.log("Context Data",context);
+        const {
+          name,
+          username,
+          password,
+        } = this.state;
+
+        const user = {
+          name,
+          username,
+          password,
+        };
+
+        context.data.createUser(user)
+        .then( errors => {
+          if (errors.length) {
+            this.setState(errors);
+          } else {
+            console.log(`${username} is successfully signed up and authenticated.`)
+          }
+        })
+        .catch( err => {
+          console.log(err);
+          this.props.history.push('/error');
+        });
       }
     
       cancel = () => {
-    
+        this.props.history.push('/');
       }
 }

@@ -9,6 +9,7 @@ import {
 
 import Public from './components/Public';
 import Header from './components/Header';
+import NotFound from "./components/NotFound";
 import UserSignIn from "./components/UserSignIn";
 import UserSignUp from "./components/UserSignUp";
 import UserSignOut from "./components/UserSignOut";
@@ -27,6 +28,7 @@ const App = () => (
       <Route path="/signin" element={<UserSignIn/>}/>
       <Route path="/signup" element={<UserSignUpWithContext/>}/>
       <Route path="/signout" element={<UserSignOut/>}/>
+      <Route component={NotFound} />
     </Routes>
     </div>
   </Router>
