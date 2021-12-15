@@ -4,16 +4,18 @@ import Form from './Form';
 
 export default class UserSignUp extends Component {
     state = {
-        name: '',
-        username: '',
+        firstName: '',
+        lastName: '',
+        emailAddress: '',
         password: '',
         errors: [],
       }
       
     render() {
         const {
-            name,
-            username,
+            firstName,
+            lastName,
+            emailAddress,
             password,
             errors,
           } = this.state;
@@ -29,19 +31,27 @@ export default class UserSignUp extends Component {
             elements={() => (
               <React.Fragment>
                 <input 
-                  id="name" 
-                  name="name" 
+                  id="firstName" 
+                  name="firstName" 
                   type="text"
-                  value={name} 
+                  value={firstName} 
                   onChange={this.change} 
-                  placeholder="Name" />
+                  placeholder="First Name" />
                 <input 
-                  id="username" 
-                  name="username" 
+                  id="lastName" 
+                  name="lastName" 
                   type="text"
-                  value={username} 
+                  value={lastName} 
                   onChange={this.change} 
-                  placeholder="User Name" />
+                  placeholder="Last Name" />
+                <input 
+                  id="emailAddress" 
+                  name="emailAddress" 
+                  type="text"
+                  value={emailAddress} 
+                  onChange={this.change} 
+                  placeholder="Email Address" />
+
                 <input 
                   id="password" 
                   name="password"
@@ -69,37 +79,41 @@ export default class UserSignUp extends Component {
         });
       }
     
-      submit = () => {
-        //console.log("Form Submitted");
-        const { context } = this.props;
-        console.log("Context Data",context);
-        const {
-          name,
-          username,
-          password,
-        } = this.state;
+    submit = () => {
+      //console.log("Form Submitted");
+      const { context } = this.props;
+      console.log("Context Data",context);
+      const {
+        firstName,
+        lastName,
+        emailAddress,
+        password,
+      } = this.state;
 
-        const user = {
-          name,
-          username,
-          password,
-        };
+      const user = {
+        firstName,
+        lastName,
+        emailAddress,
+        password,
+      };
 
-        context.data.createUser(user)
-        .then( errors => {
-          if (errors.length) {
-            this.setState(errors);
-          } else {
-            console.log(`${username} is successfully signed up and authenticated.`)
-          }
-        })
-        .catch( err => {
-          console.log(err);
-          this.props.history.push('/error');
-        });
-      }
+      console.log("User: ", user);
+      context.data.createUser(user)
+      .then( errors => {
+        if (errors.length) {
+          // this.setState(errors);
+          console.log(errors);
+        } else {
+          console.log(`${firstName} is successfully signed up and authenticated.`)
+        }
+      })
+      .catch( err => {
+        console.log(err);
+        //this.props.history.push('/error');
+      });
+    }
     
-      cancel = () => {
-        this.props.history.push('/');
-      }
+    cancel = () => {
+      //this.props.history.push('/');
+    }
 }
