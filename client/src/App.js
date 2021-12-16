@@ -7,7 +7,7 @@ import {
   Routes
 } from 'react-router-dom';
 
-import Public from './components/Public';
+//import Public from './components/Public';
 import Courses from './components/Courses'
 import Header from './components/Header';
 import NotFound from "./components/NotFound";
@@ -18,6 +18,7 @@ import UserSignOut from "./components/UserSignOut";
 import withContext from './Context';
 
 const UserSignUpWithContext = withContext(UserSignUp);
+const CoursesWithContext = withContext(Courses);
 
 
 const App = () => (
@@ -25,8 +26,7 @@ const App = () => (
     <div>
       <Header/>
     <Routes>
-      <Route exact path="/" element={<Public />}/>
-      <Route path="/courses" element= {<Courses/>}/>
+      <Route exact path="/" element={<CoursesWithContext />}/>
       <Route path="/signin" element={<UserSignIn/>}/>
       <Route path="/signup" element={<UserSignUpWithContext/>}/>
       <Route path="/signout" element={<UserSignOut/>}/>

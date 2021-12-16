@@ -1,6 +1,7 @@
 //From React Authentication Course https://teamtreehouse.com/library/react-authentication/implementing-basic-authentication/set-up-user-registration
 // the Data class holds the methods you will use to create, sign up and autheticate user.
 import config from './config';
+const axios = require('axios');
  
 export default class Data {
     api(path, method = 'GET', body = null) {
@@ -46,6 +47,28 @@ export default class Data {
       else {
         throw new Error();
       }
+    }
+
+    async getCourses() {
+        //code example from Axios docs
+        try {
+            const response = await axios.get('http://localhost:5000/api/courses');
+            console.log(response.data);
+            return response.data;
+        } catch (error) {
+          console.error(error);
+        }
+        // let courses = await axios.get('http://localhost:5000/api/courses').catch(err => {console.log(err)});
+        // if (courses.status === 200) {
+        //     console.log("getCourses Response: ",courses.data.data);
+        // return courses;
+        // const response = await this.api('/courses')
+        // if (response.status === 200) {
+        //     console.log(response)
+        //     // return response.data.data;
+        // } else {
+        //     return "Error no courses found.";
+        // }        
     }
   }
   
