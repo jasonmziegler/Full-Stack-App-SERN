@@ -26,7 +26,7 @@ const App = () => (
       <Header/>
     <Routes>
       <Route exact path="/" element={<Public />}/>
-      <Route path="/courses" element= {<Courses />}/>
+      <Route path="/courses" element= {<Courses/>}/>
       <Route path="/signin" element={<UserSignIn/>}/>
       <Route path="/signup" element={<UserSignUpWithContext/>}/>
       <Route path="/signout" element={<UserSignOut/>}/>

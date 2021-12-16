@@ -10,7 +10,9 @@ export default class UserSignUp extends Component {
         password: '',
         errors: [],
       }
-      
+    
+    
+
     render() {
         const {
             firstName,
@@ -97,23 +99,26 @@ export default class UserSignUp extends Component {
         password,
       };
 
+      // TODO: Fix Errors returning as undefined, no errors returned
       console.log("User: ", user);
       context.data.createUser(user)
       .then( errors => {
-        if (errors.length) {
-          // this.setState(errors);
-          console.log(errors);
+        console.log("Errors: ", errors);
+        if (errors) {
+          //this.setState({errors});
+          console.log("Errors: ",errors);
         } else {
           console.log(`${firstName} is successfully signed up and authenticated.`)
         }
       })
       .catch( err => {
         console.log(err);
-        //this.props.history.push('/error');
+        this.props.history.push('/error');
       });
     }
-    
+    //TODO: Fix No access to props. 
     cancel = () => {
+      console.log("Props History", this.props.history);
       //this.props.history.push('/');
     }
 }
