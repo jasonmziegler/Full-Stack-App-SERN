@@ -1,23 +1,47 @@
 // adapted code from React-Authentication-Api-Project
 import React, {Component} from 'react';
+import CourseDetail from './CourseDetail';
 
-
+// class component is stateful component
 export default class Courses extends Component {
-    constructor() {
-        super();
+    constructor(props) { 
+        super(props);
         this.state = {
+            loading:true,
             courses: []
         }
     }
+   async componentDidMount() {
+        const { context } = this.props; 
+        const courses = await context.data.getCourses();
+        console.log('courses',courses)
+        this.setState({
+            courses,
+            loading:false
+        })
+        
+    }
+    
+    
     render() {
-        const { context } = this.props;
-        const courses = context.data.getCourses();
-        console.log(courses);
+        let{loading,courses} = this.state;
+        //console.log("context", context);
+        
+        //console.log("Course 1", this.state.courses);
         return(
             <div>
                 <div>
                     <h1>Welcome to the Course App</h1>   
                     <p>This will be a course list"</p>
+                  {!loading && courses.map((course)=>{
+                      return(
+                          <div key={()=>course.id.toString()}>
+
+                        <CourseDetail title={course.title} description={course.description}/>
+                        </div>
+                      )
+                  })}
+
                 </div>
             </div>
         )

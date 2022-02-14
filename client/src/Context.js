@@ -6,8 +6,8 @@ const Context = React.createContext();
 
 export class Provider extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.data = new Data();
   }
 

@@ -108,7 +108,8 @@ export default class UserSignUp extends Component {
           //this.setState({errors});
           console.log("Errors: ",errors);
         } else {
-          console.log(`${firstName} is successfully signed up and authenticated.`)
+          console.log(`${firstName} is successfully signed up and authenticated.`);
+          // Send to Login Page (Protected Route)
         }
       })
       .catch( err => {

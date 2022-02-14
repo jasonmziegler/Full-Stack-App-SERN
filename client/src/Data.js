@@ -58,6 +58,7 @@ export default class Data {
         } catch (error) {
           console.error(error);
         }
+        
         // let courses = await axios.get('http://localhost:5000/api/courses').catch(err => {console.log(err)});
         // if (courses.status === 200) {
         //     console.log("getCourses Response: ",courses.data.data);
