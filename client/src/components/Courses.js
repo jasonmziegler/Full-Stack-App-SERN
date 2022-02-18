@@ -37,7 +37,16 @@ export default class Courses extends Component {
                       return(
                           <div key={()=>course.id.toString()}>
 
-                        <CourseDetail title={course.title} description={course.description}/>
+                        <CourseDetail 
+                            id={course.id}
+                            title={course.title} 
+                            description={course.description} 
+                            estimatedTime={course.estimatedTime} 
+                            materialsNeeded={course.materialsNeeded} 
+                            createdAt={course.createdAt}
+                            updatedAt={course.updatedAt}
+                            userId={course.userId}
+                        />
                         </div>
                       )
                   })}
