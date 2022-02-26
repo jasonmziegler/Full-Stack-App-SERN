@@ -60,6 +60,42 @@ export default class Data {
         }
     }
 
+    async getCourseById(courseId) {
+      try {
+        const response = await axios.get(`http://localhost:5000/api/courses/${courseId}`);
+            console.log(response.data);
+            return response.data
+
+      } catch(err) {
+        console.log("err",)
+      }
+    }
+    //payload is the data coming from the UI 
+    async updateCourse(payload) {
+      const { title,
+        description,
+        courseId,
+        estimatedTime,
+        materialsNeeded,
+        userId,
+      } = payload;
+      console.log("PAYLOAD",payload);
+      try{
+        const response = await axios.put(`http://localhost:5000/api/courses/${courseId}`,{
+              title,
+              description,
+              estimatedTime,
+              materialsNeeded,
+              //TODO: get user from authentication (user is required to create the course)
+              userId,
+        });
+        return response.data
+        
+      }catch(err){
+        console.log("err",err.response);
+      }
+    }
+
     async getCourses() {
         //code example from Axios docs
         // title, description, materialsNeeded , estimatedTime,userId

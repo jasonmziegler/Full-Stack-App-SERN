@@ -98,7 +98,8 @@ app.post('/api/courses', (async (req, res) => {
 }));
 
 // A /api/courses/:id PUT route that will update the corresponding course and return a 204 HTTP status code and no content.
-app.put('/api/courses/:id', authenticateUser, (async (req, res) => {
+//TODO: authenticateUser, Need to add back when authenticating user
+app.put('/api/courses/:id', (async (req, res) => {
   try {
     const id  = req.params.id;
     console.log("ID: ", id);

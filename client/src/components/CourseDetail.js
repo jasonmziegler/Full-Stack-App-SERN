@@ -1,6 +1,6 @@
 // adapted code from React-Authentication-Api-Project
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 const CourseDetail = ({id,title,description,estimatedTime,materialsNeeded,createdAt,updatedAt,userId}) => (
     <div id="root">
          {/* <header>
@@ -17,7 +17,11 @@ const CourseDetail = ({id,title,description,estimatedTime,materialsNeeded,create
         <main>
             <div class="actions--bar">
                 <div class="wrap">
-                    <a class="button" href="update-course.html">Update Course</a>
+                <Link to={`/update-course/${id}`}>
+                <h3>
+                Update Course
+                </h3>
+                </Link>
                     <a class="button" href="#">Delete Course</a>
                     <a class="button button-secondary" href="index.html">Return to List</a>
                 </div>

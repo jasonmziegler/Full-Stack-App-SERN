@@ -15,11 +15,13 @@ import UserSignIn from "./components/UserSignIn";
 import UserSignUp from "./components/UserSignUp";
 import UserSignOut from "./components/UserSignOut";
 import CreateCourse from "./components/CreateCourse";
+import UpdateCourse from "./components/UpdateCourse";
 import withContext from './Context';
 
 const UserSignUpWithContext = withContext(UserSignUp);
 const CoursesWithContext = withContext(Courses);
 const CreateCourseWithContext = withContext(CreateCourse);
+const UpdateCourseWithContext = withContext(UpdateCourse);
 
 const App = () => (
   <Router>
@@ -28,6 +30,7 @@ const App = () => (
     <Routes>
     <Route exact path="/" element={<CoursesWithContext />}/>
     <Route exact path="/create-course" element={<CreateCourseWithContext />}/>
+    <Route exact path="/update-course/:id" element={<UpdateCourseWithContext />}/>
       <Route path="/signin" element={<UserSignIn/>}/>
       <Route path="/signup" element={<UserSignUpWithContext/>}/>
       <Route path="/signout" element={<UserSignOut/>}/>
