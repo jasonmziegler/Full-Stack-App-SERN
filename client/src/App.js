@@ -14,19 +14,20 @@ import NotFound from "./components/NotFound";
 import UserSignIn from "./components/UserSignIn";
 import UserSignUp from "./components/UserSignUp";
 import UserSignOut from "./components/UserSignOut";
-
+import CreateCourse from "./components/CreateCourse";
 import withContext from './Context';
 
 const UserSignUpWithContext = withContext(UserSignUp);
 const CoursesWithContext = withContext(Courses);
-
+const CreateCourseWithContext = withContext(CreateCourse);
 
 const App = () => (
   <Router>
     <div>
       <Header/>
     <Routes>
-      <Route exact path="/" element={<CoursesWithContext />}/>
+    <Route exact path="/" element={<CoursesWithContext />}/>
+    <Route exact path="/create-course" element={<CreateCourseWithContext />}/>
       <Route path="/signin" element={<UserSignIn/>}/>
       <Route path="/signup" element={<UserSignUpWithContext/>}/>
       <Route path="/signout" element={<UserSignOut/>}/>

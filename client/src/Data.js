@@ -4,9 +4,10 @@ import config from './config';
 const axios = require('axios');
  
 export default class Data {
+   url = config.apiBaseUrl;
     api(path, method = 'GET', body = null) {
       const url = config.apiBaseUrl + path;
-    
+      
       const options = {
         method,
         headers: {
@@ -49,8 +50,19 @@ export default class Data {
       }
     }
 
+    // This function will create a course
+    async createCourse(payload) {
+        try{
+          const response = await axios.post(`${this.url}/courses`,payload);
+          
+        }catch(err){
+          console.log("err",err);
+        }
+    }
+
     async getCourses() {
         //code example from Axios docs
+        // title, description, materialsNeeded , estimatedTime,userId
         try {
             const response = await axios.get('http://localhost:5000/api/courses');
             console.log(response.data);
