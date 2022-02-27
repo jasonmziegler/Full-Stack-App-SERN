@@ -20,6 +20,7 @@ const CreateCourse = (props) => {
                 //TODO: get user from authentication (user is required to create the course)
                 userId:1,
           });
+          return response;
           
         }catch(err){
           console.log("err",err.response);
@@ -27,9 +28,9 @@ const CreateCourse = (props) => {
     }
     return(
         <main>
-        <div class="wrap">
+        <div className="wrap">
             <h2>Create Course</h2>
-            <div class="validation--errors">
+            <div className="validation--errors">
                 <h3>Validation Errors</h3>
                 <ul>
                     <li>Please provide a value for "Title"</li>
@@ -37,7 +38,7 @@ const CreateCourse = (props) => {
                 </ul>
             </div>
             <form onSubmit={createCourse}>
-                <div class="main--flex">
+                <div className="main--flex">
                     <div>
                         <label for="courseTitle">Course Title</label>
                         <input id="courseTitle" name="courseTitle" type="text" value={title} onChange={e=>setTitle(e.target.value)}/>
@@ -55,7 +56,7 @@ const CreateCourse = (props) => {
                         <textarea id="materialsNeeded" name="materialsNeeded" value={materialsNeeded} onChange={e=>setMaterialsNeeded(e.target.value)}></textarea>
                     </div>
                 </div>
-                <button class="button" type="submit" >Create Course</button> <Link to="/">Go Back</Link>
+                <button className="button" type="submit" >Create Course</button> <Link to="/">Go Back</Link>
             </form>
         </div>
     </main>

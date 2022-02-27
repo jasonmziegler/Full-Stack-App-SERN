@@ -54,6 +54,7 @@ export default class Data {
     async createCourse(payload) {
         try{
           const response = await axios.post(`${this.url}/courses`,payload);
+          return response;
           
         }catch(err){
           console.log("err",err);
@@ -62,9 +63,10 @@ export default class Data {
 
     async getCourseById(courseId) {
       try {
+        console.log("GetCourseById CourseId", courseId);
         const response = await axios.get(`http://localhost:5000/api/courses/${courseId}`);
-            console.log(response.data);
-            return response.data
+        console.log("getCourseById ResponseData: ",response.data);
+        return response.data;
 
       } catch(err) {
         console.log("err",)
@@ -101,12 +103,14 @@ export default class Data {
         // title, description, materialsNeeded , estimatedTime,userId
         try {
             const response = await axios.get('http://localhost:5000/api/courses');
-            console.log(response.data);
+            //console.log(response.data);
             return response.data;
         } catch (error) {
           console.error(error);
         }
         
+
+        // OLD FUnction trying to use this.api
         // let courses = await axios.get('http://localhost:5000/api/courses').catch(err => {console.log(err)});
         // if (courses.status === 200) {
         //     console.log("getCourses Response: ",courses.data.data);
@@ -118,6 +122,20 @@ export default class Data {
         // } else {
         //     return "Error no courses found.";
         // }        
+    }
+    async deleteCourse(courseId) {
+      //Delete a course
+      //
+      try {
+        console.log("Delete CourseId", courseId);
+        const response = await axios.get(`http://localhost:5000/api/courses/${courseId}`);
+        console.log("getCourseById ResponseData: ",response.data);
+        return response.data;
+
+      } catch(err) {
+        console.log("err",)
+      }
+
     }
   }
   

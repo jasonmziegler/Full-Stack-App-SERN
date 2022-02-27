@@ -1,11 +1,11 @@
 // adapted code from React-Authentication-Api-Project
 import React,{useState,useEffect} from 'react';
 import { useParams } from 'react-router-dom';
-import axios from "axios";
+//import axios from "axios";
 const UpdateCourse = (props) => {
     const params = useParams();
     const { context } = props; 
-    const getCourseById = context.data.getCourseById
+    const getCourseById = context.data.getCourseById;
     const courseUpdate = context.data.updateCourse;
     const [course,  setCourse] = useState();
     const [loading,setLoading] = useState(false);
@@ -13,23 +13,6 @@ const UpdateCourse = (props) => {
     const [description,setDescription] = useState("");
     const [estimatedTime,setEstimatedTime] = useState("");
     const [materialsNeeded,setMaterialsNeeded] = useState("");
-
-   async function getCourse(){
-       setLoading(true)
-        try{
-            let response = await getCourseById(params.id)
-            console.log("RESPONSE",response)
-            setCourse(response);
-            setTitle(response.title);
-            setDescription(response.description);
-            setEstimatedTime(response.estimatedTime);
-            setMaterialsNeeded(response.materialsNeeded);
-        }catch(err){
-            console.log("ERR",err)
-        }finally{
-            setLoading(false)
-        }
-    }
 
     async function updateSingleCourse(e) {
         e.preventDefault();
@@ -42,18 +25,37 @@ const UpdateCourse = (props) => {
                 courseId:params.id,
                 userId:1,
             }
-            let response = await courseUpdate(payload)
-            
-  
+            let response = await courseUpdate(payload);
+            return response;
+
         }catch(err){
             console.log("ERR",err)
         }finally{
             
+        }   
     }
-}
-    // a React Hook used only inside functional component similar to componentDidMount 
+
+    async function getCourseFromAPI(){
+        setLoading(true)
+         try{
+             let response = await getCourseById(params.id)
+             console.log("RESPONSE",response)
+             setCourse(response);
+             console.log("UpdateCourse courseFromAPI: ",course);
+             setTitle(response.title);
+             setDescription(response.description);
+             setEstimatedTime(response.estimatedTime);
+             setMaterialsNeeded(response.materialsNeeded);
+         }catch(err){
+             console.log("ERR",err)
+         }finally{
+             setLoading(false)
+         }
+     }
+
+    // a React Hook used only inside functional component similar to componentDidMount - runs once
     useEffect(()=>{
-        getCourse();
+        getCourseFromAPI();
     },[])
 
     return (
@@ -91,7 +93,7 @@ const UpdateCourse = (props) => {
                     <textarea id="materialsNeeded" name="materialsNeeded" value={materialsNeeded} onChange={e=>setMaterialsNeeded(e.target.value)}></textarea>
                 </div>
             </div>
-            <button class="button" type="submit">Update Course</button><button class="button button-secondary" onclick="event.preventDefault(); location.href='index.html';">Cancel</button>
+            <button className="button" type="submit">Update Course</button><button className="button button-secondary" onClick="event.preventDefault(); location.href='index.html';">Cancel</button>
         </form>
     }
       
