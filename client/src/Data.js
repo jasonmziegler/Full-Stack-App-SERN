@@ -5,22 +5,24 @@ const axios = require('axios');
  
 export default class Data {
    url = config.apiBaseUrl;
-    api(path, method = 'GET', body = null) {
-      const url = config.apiBaseUrl + path;
+   
+   
+    // api(path, method = 'GET', body = null) {
+    //   const url = config.apiBaseUrl + path;
       
-      const options = {
-        method,
-        headers: {
-          'Content-Type': 'application/json; charset=utf-8',
-        },
-      };
+    //   const options = {
+    //     method,
+    //     headers: {
+    //       'Content-Type': 'application/json; charset=utf-8',
+    //     },
+    //   };
   
-      if (body !== null) {
-        options.body = JSON.stringify(body);
-      }
+    //   if (body !== null) {
+    //     options.body = JSON.stringify(body);
+    //   }
   
-      return fetch(url, options);
-    }
+    //   return fetch(url, options);
+    // }
   
     async getUser() {
       const response = await this.api(`/users`, 'GET', null);
@@ -36,18 +38,18 @@ export default class Data {
     }
     
     async createUser(user) {
-      const response = await this.api('/users', 'POST', user);
-      if (response.status === 201) {
-        return [];
+      
+      try {
+        console.log("Api", this.url);
+        const response = await axios.post(`${this.url}/users`, user);
+        console.log("RESPONSE",response.data)
+        return response.data;
+      } catch (err){
+        console.log("ERR",err.response)
+        return err;
       }
-      else if (response.status === 400) {
-        return response.json().then(data => {
-          return data.errors;
-        });
-      }
-      else {
-        throw new Error();
-      }
+      
+      
     }
 
     // This function will create a course
