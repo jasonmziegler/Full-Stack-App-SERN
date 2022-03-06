@@ -1,19 +1,9 @@
 // adapted code from React-Authentication-Api-Project
 import React from 'react';
 import { Link } from 'react-router-dom';
-const CourseDetail = ({id,title,description,estimatedTime,materialsNeeded,createdAt,updatedAt,userId}) => (
-    <div id="root">
-         {/* <header>
-            <div class="wrap header--flex">
-                <h1 class="header--logo"><a href="index.html">Courses</a></h1>
-                <nav>
-                    <ul class="header--signedin">
-                        <li>Welcome, Joe Smith!</li>
-                        <li><a href="sign-out.html">Sign Out</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </header> */}
+const CourseDetail = ({id,title,description,estimatedTime,materialsNeeded,createdAt,updatedAt,userId, deleteCourse}) => (
+
+       
         <main>
             <div className="actions--bar">
                 <div className="wrap">
@@ -22,7 +12,7 @@ const CourseDetail = ({id,title,description,estimatedTime,materialsNeeded,create
                 Update Course
                 </h3>
                 </Link>
-                    <a className="button" href="#">Delete Course</a>
+                    <button onClick={() => deleteCourse(id)}>Delete Course</button>
                     {/* <a className="button button-secondary" href="index.html">Return to List</a> */}
                 </div>
             </div>
@@ -61,7 +51,7 @@ const CourseDetail = ({id,title,description,estimatedTime,materialsNeeded,create
                 </form>
             </div>
         </main>
-    </div>
+
 );
 
 export default CourseDetail;

@@ -60,12 +60,12 @@ const UpdateCourse = (props) => {
 
     return (
     <main>
-    <div class="wrap">
+    <div className="wrap">
 
         <h2>Update Course</h2>
         {/* while loading don't display the form */}
         {loading? "loading":  <form onSubmit={updateSingleCourse}>
-            <div class="main--flex">
+            <div className="main--flex">
                 <div>
                     <label for="courseTitle">Course Title</label>
                     <input id="courseTitle" name="courseTitle" type="text" value={title} onChange={e=>setTitle(e.target.value)}/>

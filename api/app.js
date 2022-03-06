@@ -126,7 +126,9 @@ app.put('/api/courses/:id', (async (req, res) => {
   
 }));
 // A /api/courses/:id DELETE route that will delete the corresponding course and return a 204 HTTP status code and no content.
-app.delete('/api/courses/:id', authenticateUser, (async (req, res) => {
+//TODO: Add back when authentication is Complete
+// authenticateUser,
+app.delete('/api/courses/:id',  (async (req, res) => {
   try {
     const id = req.params.id;
   const course = await Course.findByPk(id);

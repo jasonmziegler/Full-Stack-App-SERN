@@ -128,8 +128,8 @@ export default class Data {
       //
       try {
         console.log("Delete CourseId", courseId);
-        const response = await axios.get(`http://localhost:5000/api/courses/${courseId}`);
-        console.log("getCourseById ResponseData: ",response.data);
+        const response = await axios.delete(`http://localhost:5000/api/courses/${courseId}`);
+        //console.log("getCourseById ResponseData: ",response.data);
         return response.data;
 
       } catch(err) {
